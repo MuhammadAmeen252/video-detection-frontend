@@ -1,0 +1,1 @@
+export const logsTableHeaders = ["ID","Image","Date","Time","Actions"]
