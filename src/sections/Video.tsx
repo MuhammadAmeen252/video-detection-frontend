@@ -26,7 +26,11 @@ const Video: React.FC = () => {
   return (
     <div className={`flex flex-col w-full justify-center items-center mt-5 ${styles.innerWidth} ${styles.paddings}`}>
       <div className="flex flex-row pb-2 justify-center items-center gap-2">
-      <div className={`w-3 h-3 rounded-full ${!showVideo ? "bg-red-600" : "bg-green-600"}`} />
+        <div style={{
+          backgroundColor: !showVideo ? 'red' : 'green',
+          width: '13px',
+          height: '13px'
+        }} className={`w-3 h-3 rounded-full`} />
         <p className="font-sm">{!showVideo ? "Offline" : "Online"}</p>
       </div>
       <DroppableBox ref={droppableBoxRef}>
@@ -39,20 +43,20 @@ const Video: React.FC = () => {
             Your browser does not support the video tag.
           </video>
         ) : (
-          <div className='w-[100%] h-[100%] bg-[#e9e9e9] flex justify-center items-center'>
-            <p>Offline</p>
+          <div style={{ width: '100%', height: '100%' }} className='bg-[#e9e9e9] flex justify-center items-center'>
+            <p>Video turned off!</p>
           </div>
         )}
         {/* <div className='w-[500px] h-[500px] bg-[#e9e9e9]'></div> */}
-        {showVideo && <DraggableBox parentRef={droppableBoxRef} isMoveable={isCalibrate}/>}
+        {showVideo && <DraggableBox parentRef={droppableBoxRef} isMoveable={isCalibrate} />}
 
       </DroppableBox>
       <div className="flex md:flex-row flex-col gap-5 justify-start p-5 relative sm:mt-0 mt-[45px]">
         <CustomButton text={showVideo ? "Turn Off" : "Turn On"} icon="on-off.png" handleOnclick={toggleVideo} />
-        <CustomButton 
+        <CustomButton
           text={isCalibrate ? "Calibrate On" : "Calibrate Off"}
-          icon="calibrate.png" 
-          handleOnclick={toggleCalibrate} 
+          icon="calibrate.png"
+          handleOnclick={toggleCalibrate}
           focus={isCalibrate}
         />
         {/* <CustomButton
@@ -60,7 +64,7 @@ const Video: React.FC = () => {
           htmlContent={<div className={`w-3 h-3 rounded-full ${!showVideo ? "bg-red-600" : "bg-green-600"}`} />}
         /> */}
         {/* <CustomButton text="Camera mode" icon="cam.png" /> */}
-        <CustomButton text="Detection Log" icon="log.png" handleOnclick={() => router.push('/logs')}/>
+        <CustomButton text="Detection Log" icon="log.png" handleOnclick={() => router.push('/logs')} />
       </div>
     </div>
   );
